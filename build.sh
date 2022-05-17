@@ -46,6 +46,8 @@ case $SDK_VERSION in
   11.3*)  TARGET=darwin20.4; X86_64H_SUPPORTED=1; I386_SUPPORTED=0; ARM_SUPPORTED=1; NEED_TAPI_SUPPORT=1; OSX_VERSION_MIN_INT=10.9;  ;;
   12.0*)  TARGET=darwin21.1; X86_64H_SUPPORTED=1; I386_SUPPORTED=0; ARM_SUPPORTED=1; NEED_TAPI_SUPPORT=1; OSX_VERSION_MIN_INT=10.9;  ;;
   12.1*)  TARGET=darwin21.2; X86_64H_SUPPORTED=1; I386_SUPPORTED=0; ARM_SUPPORTED=1; NEED_TAPI_SUPPORT=1; OSX_VERSION_MIN_INT=10.9;  ;;
+  12.2*)  TARGET=darwin21.3; X86_64H_SUPPORTED=1; I386_SUPPORTED=0; ARM_SUPPORTED=1; NEED_TAPI_SUPPORT=1; OSX_VERSION_MIN_INT=10.9;  ;;
+  12.3*)  TARGET=darwin21.4; X86_64H_SUPPORTED=1; I386_SUPPORTED=0; ARM_SUPPORTED=1; NEED_TAPI_SUPPORT=1; OSX_VERSION_MIN_INT=10.9;  ;;
  *) echo "Unsupported SDK"; exit 1 ;;
 esac
 
@@ -94,7 +96,9 @@ fi
 
 # XAR
 
-build_xar
+if [[ $PLATFORM != Darwin ]]; then
+  build_xar
+fi
 
 # XAR END
 
@@ -125,7 +129,9 @@ if [ $f_res -eq 1 ]; then
   pushd $CURRENT_BUILD_PROJECT_NAME/cctools &>/dev/null
   echo ""
 
-  CONFFLAGS="--prefix=$TARGET_DIR --target=x86_64-apple-$TARGET "
+  if [[ $PLATFORM != Darwin ]]; then
+    CONFFLAGS+="--with-libxar=$TARGET_DIR "
+  fi
   if [ $NEED_TAPI_SUPPORT -eq 1 ]; then
     CONFFLAGS+="--with-libtapi=$TARGET_DIR "
   fi
