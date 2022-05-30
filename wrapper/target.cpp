@@ -188,7 +188,7 @@ bool Target::getMacPortsPkgConfigDir(std::string &path) const {
   if (!getMacPortsDir(path))
     return false;
 
-  path += "/pkgs/opt/local/lib/pkgconfig";
+  path += "/pkgs/usr/local/lib/pkgconfig";
   return dirExists(path);
 }
 
@@ -196,7 +196,7 @@ bool Target::getMacPortsIncludeDir(std::string &path) const {
   if (!getMacPortsDir(path))
     return false;
 
-  path += "/pkgs/opt/local/include";
+  path += "/pkgs/usr/local/include";
   return dirExists(path);
 }
 
@@ -204,7 +204,7 @@ bool Target::getMacPortsLibDir(std::string &path) const {
   if (!getMacPortsDir(path))
     return false;
 
-  path += "/pkgs/opt/local/lib";
+  path += "/pkgs/usr/local/lib";
   return dirExists(path);
 }
 
@@ -212,7 +212,7 @@ bool Target::getMacPortsFrameworksDir(std::string &path) const {
   if (!getMacPortsDir(path))
     return false;
 
-  path += "/pkgs/opt/local/Library/Frameworks";
+  path += "/pkgs/usr/local/Library/Frameworks";
   return dirExists(path);
 }
 
