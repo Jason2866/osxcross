@@ -19,7 +19,7 @@ mkdir -p $BUILD_DIR
 source $BASE_DIR/tools/trap_exit.sh
 
 if [ -z "$CLANG_VERSION" ]; then
-  CLANG_VERSION=12.0.0
+  CLANG_VERSION=14.0.4
 fi
 
 if [ -z "$INSTALLPREFIX" ]; then
@@ -28,7 +28,7 @@ fi
 
 # acceptable values are llvm or apple
 if [ -z "$GITPROJECT" ]; then
-  GITPROJECT="apple"
+  GITPROJECT="llvm"
 fi
 
 require cmake

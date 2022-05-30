@@ -18,7 +18,7 @@ source tools/tools.sh
 # GCC version to build
 # (<4.7 will not work properly with libc++)
 if [ -z "$GCC_VERSION" ]; then
-  GCC_VERSION=10.3.0
+  GCC_VERSION=12.1.0
   #GCC_VERSION=5-20200228 # snapshot
 fi
 
@@ -111,8 +111,8 @@ if [[ $PLATFORM == *BSD ]]; then
   export LD_LIBRARY_PATH="/usr/local/lib:/usr/pkg/lib:$LD_LIBRARY_PATH"
 elif [ "$PLATFORM" == "Darwin" ]; then
   export CPATH="/opt/local/include:$CPATH"
-  export LDFLAGS="-L/opt/local/lib $LDFLAGS"
-  export LD_LIBRARY_PATH="/opt/local/lib:$LD_LIBRARY_PATH"
+  export LDFLAGS="-L/usr/local/lib $LDFLAGS"
+  export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 fi
 
 EXTRACONFFLAGS=""
@@ -145,6 +145,9 @@ fi
   --disable-libstdcxx-pch \
   --prefix=$TARGET_DIR \
   --with-system-zlib \
+  --with-gmp=/opt/homebrew/opt/gmp \
+  --with-mpfr=/opt/homebrew/opt/mpfr \
+  --with-mpc=/opt/homebrew/opt/libmpc \
   $EXTRACONFFLAGS
 
 $MAKE -j$JOBS
