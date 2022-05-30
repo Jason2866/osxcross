@@ -112,7 +112,10 @@ else, set the `TARGET_DIR` variable.  For example:
 ```shell
     TARGET_DIR=/usr/local/osxcross ./build.sh
 ```
-
+for Apple Silicon run:
+```shell
+sudo TARGET_DIR=/usr/local ./build.sh
+```
 And/Or, set variable `UNATTENDED` to `1` to skip the prompt and proceed straight to
 the build:
 
