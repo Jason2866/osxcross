@@ -449,14 +449,14 @@ eval $(osxcross-conf)
     {
       run $@
       [ "$status" -eq 0 ]
-      if [ -d "${OSXCROSS_TARGET_DIR}/macports/pkgs/opt/local/include" ]; then
-        [[ "${lines[0]}" == *\ -isystem\ */macports/pkgs/opt/local/include\ * ]]
+      if [ -d "${OSXCROSS_TARGET_DIR}/macports/pkgs/usr/local/include" ]; then
+        [[ "${lines[0]}" == *\ -isystem\ */macports/pkgs/usr/local/include\ * ]]
       fi
-      if  [ -d "${OSXCROSS_TARGET_DIR}/macports/pkgs/opt/local/lib" ]; then
-        [[ "${lines[0]}" == *\ -L\ */macports/pkgs/opt/local/lib\ * ]]
+      if  [ -d "${OSXCROSS_TARGET_DIR}/macports/pkgs/usr/local/lib" ]; then
+        [[ "${lines[0]}" == *\ -L\ */macports/pkgs/usr/local/lib\ * ]]
       fi
-      if  [ -d "${OSXCROSS_TARGET_DIR}/macports/pkgs/opt/local/Library/Frameworks" ]; then
-        [[ "${lines[0]}" == *\ -iframework\ */macports/pkgs/opt/local/Library/Frameworks\ * ]]
+      if  [ -d "${OSXCROSS_TARGET_DIR}/macports/pkgs/usr/local/Library/Frameworks" ]; then
+        [[ "${lines[0]}" == *\ -iframework\ */macports/pkgs/usr/local/Library/Frameworks\ * ]]
       fi
 
       if [[ $1 == *clang++* ]]; then
