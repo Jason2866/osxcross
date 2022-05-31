@@ -110,7 +110,7 @@ if [[ $PLATFORM == *BSD ]]; then
   export LDFLAGS="-L/usr/local/lib -L/usr/pkg/lib $LDFLAGS"
   export LD_LIBRARY_PATH="/usr/local/lib:/usr/pkg/lib:$LD_LIBRARY_PATH"
 elif [ "$PLATFORM" == "Darwin" ]; then
-  export CPATH="/opt/local/include:$CPATH"
+  export CPATH="/usr/local/include:$CPATH"
   export LDFLAGS="-L/usr/local/lib $LDFLAGS"
   export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 fi
