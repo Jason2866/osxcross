@@ -42,7 +42,7 @@ function remove_locks()
 
 function build_and_install()
 {
-  if [ ! -f "have_$1_$2_${TARGET}" ]; then
+  if [ ! -f "have_$1_$2_${TARGET}_${TARGET_ARCH}" ]; then
     pushd $TARBALL_DIR &>/dev/null
     download "$MIRROR/$1/$1-$2.tar.gz"
     popd &>/dev/null
@@ -68,7 +68,7 @@ function build_and_install()
 
     popd &>/dev/null
     popd &>/dev/null
-    touch "have_$1_$2_${TARGET}"
+    touch "have_$1_$2_${TARGET}_${TARGET_ARCH}"
   fi
 }
 
